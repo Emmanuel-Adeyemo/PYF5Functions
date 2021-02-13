@@ -1,10 +1,12 @@
 predict.geno.values.assisted <- function(full_geno, pheno_train, geno_train, pheno_val, geno_val, prop, cycles) { # function hardcorded for Traits
 
+    # libraries to load
     require(dplyr)
     require(rrBLUP)
     require(purrr)
     require(gsubfn)
     
+    # checks if this is the appropiate fuction to use
     if(prop < 1 || prop > 99){
         stop(cat(blue("This function cannot add", prop, "percent of the val pop to TP, use predict.geno.values() instead.\n")))
     }
@@ -43,7 +45,7 @@ predict.geno.values.assisted <- function(full_geno, pheno_train, geno_train, phe
     pred_ability_df[r, 1] <-  acc.twt; pred_ability_df[r, 2] <-  acc.vsk; pred_ability_df[r, 3] <-  acc.dis 
     twt_list[[length(twt_list) + 1]] <- pgv.twt; vsk_list[[length(vsk_list) + 1]] <- pgv.vsk; dis_list[[length(dis_list) + 1]] <- pgv.dis
       
-    } 
+    } # Loop ends here
     twt_reduce <- twt_list %>% reduce(full_join, by = "ID")
     vsk_reduce <- vsk_list %>% reduce(full_join, by = "ID")
     dis_reduce <- dis_list %>% reduce(full_join, by = "ID")

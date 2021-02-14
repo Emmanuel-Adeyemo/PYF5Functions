@@ -38,9 +38,9 @@ predict.geno.values.assisted <- function(full_geno, pheno_train, geno_train, phe
        
     XF <- as.matrix(model.matrix(ID~Env, data = new_train_pheno))
     
-    list[acc.twt, pgv.twt] <- do.mixed.solve(new_train_pheno, new_train_geno, XF, pheno_val, new_val_geno, "Twt")
-    list[acc.vsk, pgv.vsk] <- do.mixed.solve(new_train_pheno, new_train_geno, XF, pheno_val, new_val_geno, "VSK")
-    list[acc.dis, pgv.dis] <- do.mixed.solve(new_train_pheno, new_train_geno, XF, pheno_val, new_val_geno, "DIS")
+    list[acc.twt, pgv.twt] <- do.mixed.solve(new_train_pheno, new_train_geno, XF, pheno_val, new_val_geno, "Twt")  # Trait 1
+    list[acc.vsk, pgv.vsk] <- do.mixed.solve(new_train_pheno, new_train_geno, XF, pheno_val, new_val_geno, "VSK")  # Trait 2
+    list[acc.dis, pgv.dis] <- do.mixed.solve(new_train_pheno, new_train_geno, XF, pheno_val, new_val_geno, "DIS")  # Trait 3
     
     pred_ability_df[r, 1] <-  acc.twt; pred_ability_df[r, 2] <-  acc.vsk; pred_ability_df[r, 3] <-  acc.dis 
     twt_list[[length(twt_list) + 1]] <- pgv.twt; vsk_list[[length(vsk_list) + 1]] <- pgv.vsk; dis_list[[length(dis_list) + 1]] <- pgv.dis

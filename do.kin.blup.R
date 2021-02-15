@@ -1,4 +1,4 @@
-do.kin.blup <- function(pheno_data, geno_data, trait, geno_dist, env_to_mask, prop, multi_env = NULL){ # a normal person while include cycles as an input
+do.kin.blup <- function(pheno_data, geno_data, trait, geno_dist, env_to_mask, prop, cycles, multi_env = NULL){ 
     
     perct <- prop/100;
     work_pheno <- pheno_data

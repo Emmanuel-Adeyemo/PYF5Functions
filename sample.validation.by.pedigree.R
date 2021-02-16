@@ -40,4 +40,5 @@ sample.validation.by.pedigree <- function(val_pheno, val_pedigree_data, prop_num
             selected_df_by_pedigree <- rbind(selected_df_by_pedigree, new_selected_df_remaining)
         }    
     }
+    return(selected_df_by_pedigree)
  }   

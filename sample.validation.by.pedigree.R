@@ -12,18 +12,25 @@ sample.validation.by.pedigree <- function(val_pheno, val_pedigree_data, prop_num
 
         rows_remaining <- prop_num - nrow(selected_df_by_pedigree)
         peds_more_than_round <- in_order %>% filter(n > nround)
-
+        
+        if(rows_remaining == 0){
+            break
+        }
+        
         if(rows_remaining >= nrow(peds_more_than_round)){
             selected_ped <- in_order[1:nrow(peds_more_than_round), 1]
         }else if(rows_remaining < nrow(peds_more_than_round)){
             selected_ped <- in_order[1:rows_remaining, 1]
         }    
+            
         for(i in selected_ped){
             val_data_remaining <- val_data_fr %>% anti_join(selected_df_by_pedigree, by = "ID")
             selected_rows <- sample_n(subset(val_data_remaining, Pedigree == i), 1)
             selected_df_by_pedigree <- rbind(selected_df_by_pedigree, selected_rows)        
         }
+            
         nround <- nround + 1
+        
         if(nround == maxn && prop_num > nrow(selected_df_by_pedigree)){
             new_row_remaining <- prop_num - nrow(selected_df_by_pedigree)
             take_all_pedigrees <- in_order[1:nrow(in_order), 1]

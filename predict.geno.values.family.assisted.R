@@ -27,7 +27,7 @@ predict.geno.values.family.assisted <- function(full_geno, pheno_train, geno_tra
  
         # get new train
         samp_train <- sample(nrow(pheno_train), num)
-        new_train <- train_17_pheno[-samp_train,]
+        new_train <- pheno_train[-samp_train,]
         new_train_ge <- suppressMessages(new_train %>% dplyr::select(ID) %>% inner_join(full_geno))
         
         # validation stuffs

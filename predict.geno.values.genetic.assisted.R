@@ -22,7 +22,7 @@ predict.geno.values.genetic.assisted <- function(full_geno, pheno_train, geno_tr
     # Loop starts here
     for(r in 1:cycles){
         
-        selected_validation_pheno <- select.by.genetic.algorithm(val_18_geno, num, method)
+        selected_validation_pheno <- select.by.genetic.algorithm(geno_val, num, method)
         
         selected_validation_pheno <- selected_validation_pheno %>% inner_join(pheno_val, by = "ID")
         selected_validation_id <- selected_validation_pheno %>% dplyr::select(ID)

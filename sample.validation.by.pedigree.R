@@ -1,5 +1,9 @@
 sample.validation.by.pedigree <- function(val_pheno, val_pedigree_data, prop_num){
     
+    #'@param val_pheno: dataframe of validation phenotypes
+    #'@param val_pedigree_data: dataframe of two columns. Colnames = ID and Pedigree
+    #'@param prop_num: Number of lines to select
+    
     val_data_fr <- val_pedigree_data %>% inner_join(val_pheno, by = "ID")
     in_order <- val_data_fr %>% count(Pedigree) %>% arrange(desc(n))
     maxn <- max(in_order$n)

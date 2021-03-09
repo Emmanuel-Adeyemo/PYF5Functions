@@ -1,7 +1,7 @@
 select.by.genetic.algorithm <- function(validation_genotpe, num_to_select, method){
     
     #'@param method: options are "AOPT", "DOPT", "PEVMEAN", "CDMEAN" and so on. See STPGA manual for details
-    #'@param output is a dataframe of optimized lines ie TP
+    #' output is a dataframe of optimized lines ie TP
     
     rownames(validation_genotpe) <- validation_genotpe[, 1]
     validation_genotpe <- validation_genotpe[,-1]
